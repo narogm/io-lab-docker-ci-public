@@ -39,11 +39,16 @@ image:
 		--build-arg SCHEMA_BUILD_DATE="$(SCHEMA_BUILD_DATE)" \
 		--build-arg SCHEMA_BUILD_VERSION="$(SCHEMA_BUILD_VERSION)" \
 		--build-arg SCHEMA_CMD="$(SCHEMA_CMD)" \
+		-t narogm/testimage:latest .
+	docker tag narogm/testimage:latest narogm/testimage:v1
+		
 	
   # TODO: last part of this command that tags just built image with a specyfic tag
 	
 push: image
 	# TODO: two commands, first pushes the latest image, second pushes the image tagged with specyfic tag
+	docker push narogm/testimage:latest
+	docker push narogm/testimage:v1
 	
 clean:
 
